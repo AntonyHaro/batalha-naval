@@ -22,8 +22,8 @@ form.addEventListener("submit", login);
 function tocarMusica() {
     let audio = new Audio("efeitosSonoros/musicaBatalha.mp3");
     audio.volume = "0.5";
-    audio.play();
     audio.loop = true;
+    audio.play();
 }
 
-document.addEventListener("click", tocarMusica, {once: true});
+document.addEventListener("click", tocarMusica, { once: true });
