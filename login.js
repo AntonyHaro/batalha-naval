@@ -11,10 +11,18 @@ const validarInput = ({ target }) => {
 };
 
 const login = (event) => {
-    event.preventDefault(); //bloqueia a pagina de recarregar e continua
-    localStorage.setItem("jogador", input.value); //coloca no armazenamento local a chave jogador com o valor do input
+    event.preventDefault(); 
+    localStorage.setItem("jogador", input.value); 
     window.location = "game.html";
 };
 
 input.addEventListener("input", validarInput);
 form.addEventListener("submit", login);
+
+function tocarMusica() {
+    let audio = new Audio("efeitosSonoros/musicaBatalha.mp3");
+    audio.volume = "0.5";
+    audio.play();
+}
+
+tocarMusica();
