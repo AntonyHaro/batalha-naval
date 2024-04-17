@@ -438,10 +438,9 @@ class Jogador {
             this.perdeu = true;
             this.tocarMusica("derrota");
             menu.instanciarTempo(false);
-            menu.temporizador.classList.add("temporizador-congelado");
-
             tabuleiro.piscarContainer("pisca-derrota", 3);
             tabuleiro.revelarTabuleiro();
+            menu.temporizador.innerHTML = "Que pena! Tente novamente 🙁!";
         }
     }
 
@@ -456,10 +455,10 @@ class Jogador {
                 this.tocarMusica("vitoria");
                 this.venceu = true;
                 menu.instanciarTempo(false);
-                menu.temporizador.classList.add("temporizador-congelado");
                 tabuleiro.piscarContainer("pisca-vitoria", 3);
                 menu.emote.src = "IconesBatalhaNaval/feliz.png";
-                alert("venceu");
+                menu.temporizador.innerHTML =
+                    "Parabéns! Você velejou como um grande marinheiro 🏴‍☠️‍☠️!";
             }
         }
     }
@@ -561,10 +560,6 @@ class MenuPersonagem {
     }
 }
 
-const jogarNovamente = () => {
-    window.location = "game.html";
-};
-
 const matriz = new Matriz(10, 6, 12);
 matriz.adicionarElementos();
 
@@ -579,3 +574,13 @@ const menu = new MenuPersonagem(player);
 menu.instanciarTempo(true);
 
 nomeJogador.innerHTML = localStorage.getItem("jogador");
+
+document.addEventListener(
+    "click",
+    () => {
+        let audio = new Audio("EfeitosSonoros/musicaBatalha.mp3");
+        audio.volume = "0.4";
+        audio.play();
+    },
+    { once: true }
+);
