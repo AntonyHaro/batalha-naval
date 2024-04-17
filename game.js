@@ -578,7 +578,7 @@ nomeJogador.innerHTML = localStorage.getItem("jogador");
 document.addEventListener(
     "click",
     () => {
-        let audio = new Audio("EfeitosSonoros/musicaBatalha.mp3");
+        let audio = new Audio("efeitosSonoros/musicaBatalha.mp3");
         audio.volume = "0.4";
         audio.play();
     },
