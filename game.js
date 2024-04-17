@@ -575,12 +575,11 @@ menu.instanciarTempo(true);
 
 nomeJogador.innerHTML = localStorage.getItem("jogador");
 
-document.addEventListener(
-    "click",
-    () => {
-        let audio = new Audio("efeitosSonoros/musicaBatalha.mp3");
-        audio.volume = "0.4";
-        audio.play();
-    },
-    { once: true }
-);
+function tocarMusica() {
+    let audio = new Audio("efeitosSonoros/musicaBatalha.mp3");
+    audio.volume = "0.5";
+    audio.loop = true;
+    audio.play();
+}
+
+document.addEventListener("click", tocarMusica, { once: true });
