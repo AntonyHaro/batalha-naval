@@ -67,16 +67,6 @@ class Matriz {
         }
     }
 
-    // adicionarNavios() {
-    //     for (let i = 2; i < this.quantidadeNavios + 2; i++) {
-    //         if (i < 5) {
-    //             this.criaNavio(i, i, this.matriz);
-    //         } else {
-    //             this.criaNavio(3, i, this.matriz);
-    //         }
-    //     }
-    // }
-
     adicionarElemento(elemento, quantidadeElemento) {
         for (let i = 0; i < quantidadeElemento; i++) {
             let linha = Math.floor(Math.random() * this.matriz.length);
@@ -478,14 +468,6 @@ class Jogador {
         let audio;
 
         switch (qualMusica) {
-            case "musicaBatalha":
-                if (musicaBatalhaAudio) {
-                    audio = musicaBatalhaAudio;
-                } else {
-                    audio = new Audio("efeitosSonoros/musicaBatalha.mp3");
-                    musicaBatalhaAudio = audio;
-                }
-                break;
             case "bomba":
                 audio = new Audio("efeitosSonoros/bomba.mp3");
                 break;
@@ -506,21 +488,13 @@ class Jogador {
         audio.volume = 0.5;
         audio.play();
 
-        if (qualMusica == "musicaBatalha") {
-            audio.volume = 0.05;
-            audio.loop = true;
-        } else if (qualMusica != "perdeu" && qualMusica != "vitoria") {
+        if (qualMusica != "perdeu" && qualMusica != "vitoria") {
             audio.addEventListener("timeupdate", function () {
                 if (audio.currentTime >= 2.5) {
                     audio.pause();
                 }
             });
         }
-    }
-
-    pararMusica(qualMusica) {
-        qualMusica.loop = false;
-        qualMusica.pause();
     }
 }
 
@@ -591,12 +565,12 @@ const jogarNovamente = () => {
     window.location = "game.html";
 };
 
-const matriz = new Matriz(10, 6, 8);
+const matriz = new Matriz(10, 6, 12);
 matriz.adicionarElementos();
 
 const arrayStrings = matriz.gerarArrayStrings();
 
-const player = new Jogador(6);
+const player = new Jogador(5);
 
 const tabuleiro = new Tabuleiro(arrayStrings, player);
 tabuleiro.carregarJogo();
@@ -605,9 +579,3 @@ const menu = new MenuPersonagem(player);
 menu.instanciarTempo(true);
 
 nomeJogador.innerHTML = localStorage.getItem("jogador");
-
-console.log(matriz);
-
-// if (false) {
-//     //naoexecurta sommmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-// }
