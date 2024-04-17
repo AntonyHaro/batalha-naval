@@ -13,9 +13,9 @@
   justify-content: center;
   height: 100vh;
   background-image: url("IconesBatalhaNaval/fundoLogin.jpg!d");
+  filter: brightness(100%) saturate(100%) hue-rotate(180deg);
   background-size: cover;
   background-position: center;
-  filter: brightness(100%) saturate(100%) hue-rotate(180deg);
 }
 
 .login-form {
