@@ -11,8 +11,8 @@ const validarInput = ({ target }) => {
 };
 
 const login = (event) => {
-    event.preventDefault(); 
-    localStorage.setItem("jogador", input.value); 
+    event.preventDefault();
+    localStorage.setItem("jogador", input.value);
     window.location = "game.html";
 };
 
