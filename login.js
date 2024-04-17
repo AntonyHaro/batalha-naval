@@ -25,4 +25,4 @@ function tocarMusica() {
     audio.play();
 }
 
-tocarMusica();
+document.addEventListener("click", tocarMusica);
