@@ -19,9 +19,11 @@ const login = (event) => {
 input.addEventListener("input", validarInput);
 form.addEventListener("submit", login);
 
-document.addEventListener("click", () => {
+function tocarMusica() {
     let audio = new Audio("efeitosSonoros/musicaBatalha.mp3");
     audio.volume = "0.5";
     audio.play();
     audio.loop = true;
-}, {once: true});
+}
+
+document.addEventListener("click", tocarMusica, {once: true});
