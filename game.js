@@ -1,4 +1,5 @@
 const grid = document.querySelector(".grid");
+const interfaceElementos = document.querySelector(".grid-menu-elementos");
 const container = document.querySelector(".container");
 const nomeJogador = document.querySelector(".jogador");
 
@@ -83,7 +84,7 @@ class Matriz {
     adicionarElementos() {
         this.adicionarElemento(9, this.quantidadeBombas);
         this.adicionarElemento(8, 2);
-        for (let i = 1; i < this.quantidadeNavios + 2; i++) {
+        for (let i = 1; i < this.quantidadeNavios + 1; i++) {
             this.criaNavio(3, i, this.matriz);
         }
     }
@@ -121,9 +122,8 @@ class Matriz {
 }
 
 class Tabuleiro {
-    constructor(arrayStrings, player) {
+    constructor(arrayStrings) {
         this.arrayStrings = arrayStrings;
-        this.player = player;
     }
 
     criarElemento(tag, nomeClasse) {
@@ -170,7 +170,7 @@ class Tabuleiro {
     }
 
     estilizarPontasNavios() {
-        for (let i = 1; i < matriz.quantidadeNavios + 2; i++) {
+        for (let i = 1; i < matriz.quantidadeNavios + 1; i++) {
             const partesNavio = document.querySelectorAll(
                 `[data-navio="Ship-${i}"]`
             );
@@ -196,7 +196,7 @@ class Tabuleiro {
     revelarCard = (event) => {
         const card = event.target.parentNode;
         if (
-            this.player.perdeu ||
+            player.perdeu ||
             card.classList.contains("grid") ||
             card.classList.contains("card-revelado")
         )
@@ -208,9 +208,8 @@ class Tabuleiro {
 
         const cardVirado = card.children[0];
         cardVirado.style.opacity = "1";
-        event.target.style.opacity = "0";
 
-        return this.player.clicou(cardVirado, this, isNavio);
+        return player.clicou(cardVirado, this, isNavio);
     };
 
     mostrarCard(card) {
@@ -233,12 +232,12 @@ class Tabuleiro {
     }
 
     abrirCelulasProximasNavio = (parteNavio) => {
-        const partesTotaisNavio = document.querySelectorAll(
-            `[data-navio="${parteNavio}"]`
-        );
+        const navio = document.querySelectorAll(`[data-navio="${parteNavio}"]`);
+
+        const partesTotaisNavio = document.querySelectorAll(`.${parteNavio}`);
         this.piscarNavioDerrubado(partesTotaisNavio);
 
-        partesTotaisNavio.forEach((parte) => {
+        navio.forEach((parte) => {
             const linha = parseInt(parte.getAttribute("data-linha"));
             const coluna = parseInt(parte.getAttribute("data-coluna"));
 
@@ -292,18 +291,18 @@ class Tabuleiro {
         return isNavioDerrubado;
     }
 
-    piscarNavioDerrubado(arrayNavio) {
-        arrayNavio.forEach((card) => {
+    piscarNavioDerrubado(partesTotaisNavio) {
+        partesTotaisNavio.forEach((navio) => {
             for (let i = 0; i < 3; i++) {
                 setTimeout(function () {
-                    card.children[0].classList.add("pisca-navio");
+                    navio.classList.add("pisca-navio");
 
                     setTimeout(function () {
-                        card.children[0].classList.remove("pisca-navio");
+                        navio.classList.remove("pisca-navio");
                     }, 150);
                 }, i * 300);
             }
-            card.children[0].classList.add("navio-derrubado");
+            navio.classList.add("navio-derrubado");
         });
     }
 
@@ -379,17 +378,17 @@ class Tabuleiro {
         this.estilizarPontasNavios();
     }
 
-    piscarContainer(classe, times) {
-        let count = 0;
-        let intervalId = setInterval(function () {
+    piscarContainer(classe, quantasPiscadas) {
+        let vezes = 0;
+        let intervalo = setInterval(function () {
             if (container.classList.contains(classe)) {
                 container.classList.remove(classe);
             } else {
                 container.classList.add(classe);
             }
-            count++;
-            if (count === times * 2) {
-                clearInterval(intervalId);
+            vezes++;
+            if (vezes === quantasPiscadas * 2) {
+                clearInterval(intervalo);
             }
         }, 500);
     }
@@ -449,8 +448,8 @@ class Jogador {
             tabuleiro.abrirCelulasProximasNavio(
                 card.getAttribute("data-navio")
             );
-
             this.quantidadeNavios -= 1;
+
             if (this.quantidadeNavios <= 0) {
                 this.tocarMusica("vitoria");
                 this.venceu = true;
@@ -495,11 +494,17 @@ class Jogador {
             });
         }
     }
+
+    tocarMusicaFundo() {
+        let audio = new Audio("efeitosSonoros/musicaBatalha.mp3");
+        audio.volume = "0.2";
+        audio.loop = true;
+        audio.play();
+    }
 }
 
-class MenuPersonagem {
-    constructor(player) {
-        this.player = player;
+class Interface {
+    constructor() {
         this.menuVidas = document.getElementById("vidas");
         this.emote = document.getElementById("emote");
         this.temporizador = document.getElementById("temporizador");
@@ -507,7 +512,7 @@ class MenuPersonagem {
     }
 
     carregarVidas() {
-        for (let i = 0; i < this.player.vidas; i++) {
+        for (let i = 0; i < player.vidas; i++) {
             const li = document.createElement("li");
             const coracao = document.createElement("img");
             li.classList.add("coracao");
@@ -520,17 +525,17 @@ class MenuPersonagem {
     retirarVida() {
         const vidas = document.querySelectorAll(".coracao");
 
-        const coracao = vidas[this.player.vidas];
+        const coracao = vidas[player.vidas];
         coracao.children[0].src = "IconesBatalhaNaval/coracao-partido.png";
         coracao.style.backgroundColor = "gray";
 
-        if (this.player.vidas === 0) {
+        if (player.vidas === 0) {
             this.emote.src = "IconesBatalhaNaval/morto.png";
             this.emote.style.backgroundColor = "red";
-        } else if (this.player.vidas <= this.player.vidasInicial / 3) {
+        } else if (player.vidas <= player.vidasInicial / 3) {
             this.emote.src = "IconesBatalhaNaval/surpreso.png";
             this.emote.style.backgroundColor = "rgb(255, 172, 134)";
-        } else if (this.player.vidas <= this.player.vidasInicial / 2) {
+        } else if (player.vidas <= player.vidasInicial / 2) {
             this.emote.src = "IconesBatalhaNaval/suspeito.png";
             this.emote.style.backgroundColor = "rgb(238, 255, 0)";
         }
@@ -567,19 +572,12 @@ const arrayStrings = matriz.gerarArrayStrings();
 
 const player = new Jogador(5);
 
-const tabuleiro = new Tabuleiro(arrayStrings, player);
+const tabuleiro = new Tabuleiro(arrayStrings);
 tabuleiro.carregarJogo();
 
-const menu = new MenuPersonagem(player);
+const menu = new Interface();
 menu.instanciarTempo(true);
 
 nomeJogador.innerHTML = localStorage.getItem("jogador");
 
-function tocarMusica() {
-    let audio = new Audio("efeitosSonoros/musicaBatalha.mp3");
-    audio.volume = "0.5";
-    audio.loop = true;
-    audio.play();
-}
-
-document.addEventListener("click", tocarMusica, { once: true });
+document.addEventListener("click", player.tocarMusicaFundo, { once: true });
