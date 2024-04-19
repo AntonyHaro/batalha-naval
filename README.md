@@ -4,11 +4,11 @@
 Responsável por controlar a formação dinâmica de elementos dentro do jogo.
 - constructor: Inicializa uma nova instância da matriz de jogo com um tamanho específico, quantidade de navios e quantidade de bombas.
 - criarMatrizVazia: Cria uma matriz vazia preenchida com zeros.
-- criaNavio: Coloca um navio na matriz de jogo, garantindo que não haja sobreposição com outros navios.
-- adicionarElemento: Adiciona elementos (navios ou bombas) aleatoriamente à matriz de jogo.
-- adicionarElementos: Adiciona navios e bombas à matriz de jogo usando as funções anteriormente definidas.
-- identificarCelula: Identifica o tipo de célula com base no seu valor na matriz.
-- gerarArrayStrings: Converte a matriz de jogo em uma matriz de strings representando os tipos de células.
+- criaNavio: Coloca um navio na matriz de jogo, garantindo que não haja sobreposição com outros navios ou elementos.
+- adicionarElemento: Adiciona elementos aleatoriamente à matriz de jogo.
+- adicionarElementos: Adiciona navios, bombas e dois escudos à matriz de jogo usando as funções anteriormente definidas.
+- identificarCelula: Identifica o tipo de célula com base no seu valor na matriz e a converte em uma string.
+- gerarArrayStrings: Converte a matriz de jogo em uma matriz de strings representando os tipos de células utilizando a função anterior.
 
 ### Classe Tabuleiro: 
 Responsável por gerar e manipular elementos HTML do tabuleiro.
