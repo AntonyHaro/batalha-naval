@@ -1,6 +1,7 @@
 # Batalha-Naval
 
-Matriz:
+Classe Matriz:
+-> A classe matriz é denominada para controlar a formação dinamica de elementos dentro do jogo.
 - constructor: Inicializa uma nova instância da matriz de jogo com um tamanho específico, quantidade de navios e quantidade de bombas.
 - criarMatrizVazia: Cria uma matriz vazia preenchida com zeros.
 - criaNavio: Coloca um navio na matriz de jogo, garantindo que não haja sobreposição com outros navios.
@@ -9,7 +10,7 @@ Matriz:
 - identificarCelula: Identifica o tipo de célula com base no seu valor na matriz.
 - gerarArrayStrings: Converte a matriz de jogo em uma matriz de strings representando os tipos de células.
 
-Tabuleiro:
+Classe Tabuleiro:
 - constructor: Inicializa uma nova instância do tabuleiro de jogo com base em uma matriz de strings.
 - criarElemento: Cria um elemento HTML com uma classe específica.
 - criarCard: Cria um "cartão" (representando uma célula do jogo) com duas faces, uma virada para baixo e outra para cima.
@@ -25,7 +26,7 @@ Tabuleiro:
 - adicionarIndices: Adiciona números de linha e coluna ao tabuleiro para orientação do jogador.
 - carregarJogo: Carrega o jogo, criando os elementos HTML para representar o tabuleiro e seus elementos.
   
-Jogador:
+Classe Jogador:
 - constructor: Inicializa um novo jogador com uma quantidade específica de vidas.
 - clicou: Manipula a ação do jogador ao clicar em uma célula do jogo.
 - clicouBomba: Executa as ações necessárias quando o jogador clica em uma célula com uma bomba.
