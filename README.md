@@ -1,6 +1,7 @@
 # Batalha-Naval
 
-Classe Matriz: Responsável por controlar a formação dinâmica de elementos dentro do jogo.
+### Classe Matriz: 
+Responsável por controlar a formação dinâmica de elementos dentro do jogo.
 - constructor: Inicializa uma nova instância da matriz de jogo com um tamanho específico, quantidade de navios e quantidade de bombas.
 - criarMatrizVazia: Cria uma matriz vazia preenchida com zeros.
 - criaNavio: Coloca um navio na matriz de jogo, garantindo que não haja sobreposição com outros navios.
