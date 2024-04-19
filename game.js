@@ -196,6 +196,7 @@ class Tabuleiro {
     revelarCard = (event) => {
         const card = event.target.parentNode;
         if (
+            player.venceu ||
             player.perdeu ||
             card.classList.contains("grid") ||
             card.classList.contains("card-revelado")
@@ -400,7 +401,7 @@ class Jogador {
         this.vidas = vidas;
         this.quantidadeNavios = matriz.quantidadeNavios;
         this.perdeu = false;
-        this.venceu = true;
+        this.venceu = false;
     }
 
     clicou(cardVirado, tabuleiro, isNavio) {
