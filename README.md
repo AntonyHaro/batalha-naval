@@ -3,13 +3,13 @@
 ### Classe Matriz: 
 Responsável por controlar a formação dinâmica de elementos dentro do jogo.
 #### Métodos:
-- **_constructor_**: Inicializa uma nova instância da matriz de jogo com um tamanho específico, quantidade de navios e quantidade de bombas.
-- **_criarMatrizVazia_**: Cria uma matriz vazia preenchida com zeros.
-- **_criaNavio_**: Coloca um navio na matriz de jogo, garantindo que não haja sobreposição com outros navios ou elementos.
-- **_adicionarElemento_**: Adiciona elementos aleatoriamente à matriz de jogo.
-- **_adicionarElementos_**: Adiciona navios, bombas e dois escudos à matriz de jogo usando as funções anteriormente definidas.
-- **_identificarCelula_**: Identifica o tipo de célula com base no seu valor na matriz e a converte em uma string.
-- **_gerarArrayStrings_**: Converte a matriz de jogo em uma matriz de strings representando os tipos de células utilizando a função anterior.
+- **_constructor()_**: Inicializa uma nova instância da matriz de jogo com um tamanho específico, quantidade de navios e quantidade de bombas.
+- **_criarMatrizVazia()_**: Cria uma matriz vazia preenchida com zeros.
+- **_criaNavio()_**: Coloca um navio na matriz de jogo, garantindo que não haja sobreposição com outros navios ou elementos.
+- **_adicionarElemento()_**: Adiciona elementos aleatoriamente à matriz de jogo.
+- **_adicionarElementos()_**: Adiciona navios, bombas e dois escudos à matriz de jogo usando as funções anteriormente definidas.
+- **_identificarCelula()_**: Identifica o tipo de célula com base no seu valor na matriz e a converte em uma string.
+- **_gerarArrayStrings()_**: Converte a matriz de jogo em uma matriz de strings representando os tipos de células utilizando a função anterior.
 
 ### Classe Tabuleiro: 
 Responsável por gerar e manipular elementos HTML do tabuleiro.
