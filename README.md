@@ -1,4 +1,6 @@
-# Batalha-Naval
+# BatalhaNaval
+
+Link da aplicação: https://antonyharo.github.io/BatalhaNaval/
 
 ### Classe Matriz: 
 Responsável por controlar a formação dinâmica de elementos dentro do jogo.
