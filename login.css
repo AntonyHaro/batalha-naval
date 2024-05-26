@@ -1,41 +1,29 @@
-* {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --cor-base-botao: rgb(156, 0, 0);
 }
 
-.container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-  background-image: url("IconesBatalhaNaval/fundo1.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-.login-form {
+form {
+  transition: 0.7s;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #9fd9ff00;
-  backdrop-filter: blur(7px);
+  backdrop-filter: blur(5px);
   padding: 50px;
   border-radius: 10px;
-  box-shadow: -3px 3px 8px rgba(0, 0, 0, 0.445);
+  border: 3px solid rgba(0, 0, 0, 0.384);
+}
+
+form:hover {
+  backdrop-filter: blur(10px);
+  transform: scale(1.02);
 }
 
 .form-header {
-  align-items: center;
   display: flex;
+  align-items: center;
   flex-direction: column;
-  justify-content: center;
-  gap: 25px;
-  margin-bottom: 50px;
 }
 
 .form-header img {
@@ -46,43 +34,43 @@
 .form-header h1 {
   color: white;
   font-size: 1.5em;
-  text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.521);
+  text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.671);
 }
 
-.login-input {
-  border: 2px solid #333333;
-  border-bottom: dashed;
+input {
+  transition: 0.5s;
+  border: 3px solid #333;
+  border-bottom: 3px dashed #333;
   border-radius: 8px;
   color: #333;
   font-size: 1em;
   font-weight: bold;
   margin-bottom: 15px;
-  max-width: 300px;
   outline: none;
   padding: 15px;
   width: 100%;
 }
 
-.login-button {
-  transition: 0.5s ease;
+button {
   cursor: pointer;
-  background-color: #00badb;
-  border: 2px solid #1c3477;
-  border-radius: 8px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1em;
-  font-weight: bold;
-  max-width: 300px;
   padding: 15px;
   width: 100%;
+  transition: 0.6s ease; 
+  background-color: rgb(255, 128, 128);
+  border: 3px solid var(--cor-base-botao);
+  color: var(--cor-base-botao);
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: bold;
 }
 
-.login-button:hover {
-  transform: scale(1.01);
+button:hover {
+  background-color: var(--cor-base-botao);
+  color: white;
+  border-radius: 16px;
 }
 
-.login-button:disabled {
+button:disabled {
   background-color: #eee;
   border: 2px solid #969595;
   color: #aaa;
