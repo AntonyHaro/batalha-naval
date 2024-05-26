@@ -1,14 +1,12 @@
 const grid = document.querySelector(".grid");
-const interfaceElementos = document.querySelector(".grid-menu-elementos");
-const container = document.querySelector(".container");
-const nomeJogador = document.querySelector(".jogador");
 
 class Matriz {
     constructor(tamanho, quantidadeNavios, quantidadeBombas) {
         this.tamanho = tamanho;
-        this.matriz = this.criarMatrizVazia();
         this.quantidadeNavios = quantidadeNavios;
         this.quantidadeBombas = quantidadeBombas;
+        this.matriz = this.criarMatrizVazia();
+        this.adicionarElementos();
     }
 
     criarMatrizVazia() {
@@ -124,6 +122,7 @@ class Matriz {
 class Tabuleiro {
     constructor(arrayStrings) {
         this.arrayStrings = arrayStrings;
+        this.carregarJogo();
     }
 
     criarElemento(tag, nomeClasse) {
@@ -378,21 +377,6 @@ class Tabuleiro {
 
         this.estilizarPontasNavios();
     }
-
-    piscarContainer(classe, quantasPiscadas) {
-        let vezes = 0;
-        let intervalo = setInterval(function () {
-            if (container.classList.contains(classe)) {
-                container.classList.remove(classe);
-            } else {
-                container.classList.add(classe);
-            }
-            vezes++;
-            if (vezes === quantasPiscadas * 2) {
-                clearInterval(intervalo);
-            }
-        }, 500);
-    }
 }
 
 class Jogador {
@@ -402,6 +386,8 @@ class Jogador {
         this.quantidadeNavios = matriz.quantidadeNavios;
         this.perdeu = false;
         this.venceu = false;
+        this.tempoJogo = 0;
+        this.pontuacao = 0;
     }
 
     clicou(cardVirado, tabuleiro, isNavio) {
@@ -413,15 +399,17 @@ class Jogador {
             this.tocarMusica("agua");
         } else if (cardVirado.classList.contains("escudo")) {
             tabuleiro.revelarBombasTemporariamente();
+            this.pontuacao += 200;
         } else if (isNavio) {
             this.tocarMusica("navio");
             this.clicouNavio(card);
         }
-        return;
     }
 
     clicouBomba() {
         this.vidas -= 1;
+        this.pontuacao -= 50;
+
         menu.retirarVida();
 
         const originalSrc = menu.emote.src;
@@ -438,9 +426,8 @@ class Jogador {
             this.perdeu = true;
             this.tocarMusica("derrota");
             menu.instanciarTempo(false);
-            tabuleiro.piscarContainer("pisca-derrota", 3);
             tabuleiro.revelarTabuleiro();
-            menu.temporizador.innerHTML = "Que pena! Tente novamente 🙁!";
+            menu.calcularPontuacaoFinal();
         }
     }
 
@@ -450,15 +437,15 @@ class Jogador {
                 card.getAttribute("data-navio")
             );
             this.quantidadeNavios -= 1;
+            this.pontuacao += 100;
 
             if (this.quantidadeNavios <= 0) {
-                this.tocarMusica("vitoria");
                 this.venceu = true;
-                menu.instanciarTempo(false);
-                tabuleiro.piscarContainer("pisca-vitoria", 3);
                 menu.emote.src = "IconesBatalhaNaval/feliz.png";
-                menu.temporizador.innerHTML =
-                    "Parabéns! Você velejou como um grande marinheiro 🏴‍☠️‍☠️!";
+                this.tocarMusica("vitoria");
+                menu.instanciarTempo(false);
+                tabuleiro.revelarTabuleiro();
+                menu.calcularPontuacaoFinal();
             }
         }
     }
@@ -509,6 +496,7 @@ class Interface {
         this.menuVidas = document.getElementById("vidas");
         this.emote = document.getElementById("emote");
         this.temporizador = document.getElementById("temporizador");
+        this.pontuacao = document.getElementById("pontuacao-final");
         this.carregarVidas();
     }
 
@@ -557,28 +545,80 @@ class Interface {
         if (continua) {
             this.intervaloTempo = setInterval(() => {
                 tempo++;
+                player.tempoJogo = tempo;
+
                 this.temporizador.textContent =
                     "Tempo de jogo: " + formatarTempo(tempo);
             }, 1000);
         } else {
             clearInterval(this.intervaloTempo);
+            this.temporizador.textContent = "";
+            this.calcularPontuacaoFinal();
         }
+    }
+
+    calcularPontuacaoFinal() {
+        const tempoBonus = 80;
+
+        const bonusTempo = Math.max(tempoBonus - player.tempoJogo, 0);
+
+        const bonusVidas = player.vidas * 100;
+
+        player.pontuacao = Math.max(player.pontuacao, 0);
+
+        if (player.venceu) {
+            player.pontuacao = player.pontuacao + bonusVidas + bonusTempo + 500; // o +500 é o bonus por vencer
+
+            this.temporizador.innerHTML = `Você venceu! Pontuação Final: ${player.pontuacao}`; // caso o jogador ganhe, ele irá receber os bonus de vida e de tempo
+        } else {
+            this.temporizador.innerHTML = `Você perdeu! Pontuação Final: ${player.pontuacao}`;
+        }
+
+        this.pontuacao.innerHTML = `Sua pontuação é: <b>${player.pontuacao}</b>`;
+        this.revelarPopup(true, player.venceu);
+    }
+
+    revelarPopup(abrir, venceu) {
+        const popup = document.getElementById("fim-jogo");
+
+        if (abrir) {
+            popup.classList.add("aberto");
+
+            const piscar = (cor) => {
+                const corOriginal = popup.style.backgroundColor;
+                setTimeout(() => {
+                    popup.style.backgroundColor = cor;
+                }, 1000);
+
+                setTimeout(() => {
+                    popup.style.backgroundColor = corOriginal;
+                }, 2000);
+            };
+
+            if (venceu) {
+                piscar("rgba(138, 255, 127, 0.479)");
+                return;
+            }
+
+            piscar("rgba(255, 0, 0, 0.350)");
+            return;
+        }
+        popup.classList.remove("aberto");
     }
 }
 
 const matriz = new Matriz(10, 6, 12);
-matriz.adicionarElementos();
 
 const arrayStrings = matriz.gerarArrayStrings();
 
 const player = new Jogador(5);
 
 const tabuleiro = new Tabuleiro(arrayStrings);
-tabuleiro.carregarJogo();
 
 const menu = new Interface();
 menu.instanciarTempo(true);
 
+const nomeJogador = document.querySelector(".jogador");
 nomeJogador.innerHTML = localStorage.getItem("jogador");
 
 document.addEventListener("click", player.tocarMusicaFundo, { once: true });
