@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>A Batalha dos Sete Mares</title>
+        <link rel="stylesheet" href="reset.css" />
         <link rel="stylesheet" href="game.css" />
         <link
             rel="icon"
@@ -13,95 +14,108 @@
         <script src="game.js" defer></script>
     </head>
     <body>
-        <div class="container">
-            <div class="menu-personagem">
-                <ul>
-                    <li>
-                        <img
-                            src="IconesBatalhaNaval/oculos-escuros.png"
-                            alt=""
-                            id="emote"
-                        />
-                    </li>
-                    <li><h1 class="jogador"></h1></li>
-                    <li>
-                        <img
-                            src="IconesBatalhaNaval/controle.png"
-                            alt=""
-                            class="controle"
-                        />
-                    </li>
-                </ul>
-                <ul>
-                    <li><div id="temporizador"></div></li>
-                </ul>
-                <ul id="vidas"></ul>
-            </div>
-            <div class="grid-container">
-                <div class="grid"></div>
-                <div class="grid-menu-elementos">
-                    <p style="width: 100%; text-align: center; font-weight: bold;">💀NAVIOS💀</p>
-                    <div class="grid-menu-item">
-                        <div
-                            class="Ship-1 primeira-extremidade-navio-horizontal"
-                        ></div>
-                        <div class="Ship-1"></div>
-                        <div
-                            class="Ship-1 ultima-extremidade-navio-horizontal"
-                        ></div>
-                    </div>
+        <div id="temporizador"></div>
+        <div class="menu-personagem">
+            <ul>
+                <li>
+                    <img
+                        src="IconesBatalhaNaval/oculos-escuros.png"
+                        alt=""
+                        id="emote"
+                    />
+                </li>
+                <li><h1 class="jogador"></h1></li>
+                <li>
+                    <img
+                        src="IconesBatalhaNaval/controle.png"
+                        alt=""
+                        class="controle"
+                    />
+                </li>
+            </ul>
+            <ul id="vidas"></ul>
+        </div>
+        <div class="container-principal">
+            <div class="grid"></div>
+            <div class="grid-navios">
+                <p style="width: 100%; text-align: center; font-weight: bold">
+                    💀NAVIOS INIMIGOS💀
+                </p>
+                <div class="grid-navios-item">
+                    <div
+                        class="Ship-1 primeira-extremidade-navio-horizontal"
+                    ></div>
+                    <div class="Ship-1"></div>
+                    <div
+                        class="Ship-1 ultima-extremidade-navio-horizontal"
+                    ></div>
+                </div>
 
-                    <div class="grid-menu-item">
-                        <div
-                            class="Ship-2 primeira-extremidade-navio-horizontal"
-                        ></div>
-                        <div class="Ship-2"></div>
-                        <div
-                            class="Ship-2 ultima-extremidade-navio-horizontal"
-                        ></div>
-                    </div>
+                <div class="grid-navios-item">
+                    <div
+                        class="Ship-2 primeira-extremidade-navio-horizontal"
+                    ></div>
+                    <div class="Ship-2"></div>
+                    <div
+                        class="Ship-2 ultima-extremidade-navio-horizontal"
+                    ></div>
+                </div>
 
-                    <div class="grid-menu-item">
-                        <div
-                            class="Ship-3 primeira-extremidade-navio-horizontal"
-                        ></div>
-                        <div class="Ship-3"></div>
-                        <div
-                            class="Ship-3 ultima-extremidade-navio-horizontal"
-                        ></div>
-                    </div>
+                <div class="grid-navios-item">
+                    <div
+                        class="Ship-3 primeira-extremidade-navio-horizontal"
+                    ></div>
+                    <div class="Ship-3"></div>
+                    <div
+                        class="Ship-3 ultima-extremidade-navio-horizontal"
+                    ></div>
+                </div>
 
-                    <div class="grid-menu-item">
-                        <div
-                            class="Ship-4 primeira-extremidade-navio-horizontal"
-                        ></div>
-                        <div class="Ship-4"></div>
-                        <div
-                            class="Ship-4 ultima-extremidade-navio-horizontal"
-                        ></div>
-                    </div>
+                <div class="grid-navios-item">
+                    <div
+                        class="Ship-4 primeira-extremidade-navio-horizontal"
+                    ></div>
+                    <div class="Ship-4"></div>
+                    <div
+                        class="Ship-4 ultima-extremidade-navio-horizontal"
+                    ></div>
+                </div>
 
-                    <div class="grid-menu-item">
-                        <div
-                            class="Ship-5 primeira-extremidade-navio-horizontal"
-                        ></div>
-                        <div class="Ship-5"></div>
-                        <div
-                            class="Ship-5 ultima-extremidade-navio-horizontal"
-                        ></div>
-                    </div>
+                <div class="grid-navios-item">
+                    <div
+                        class="Ship-5 primeira-extremidade-navio-horizontal"
+                    ></div>
+                    <div class="Ship-5"></div>
+                    <div
+                        class="Ship-5 ultima-extremidade-navio-horizontal"
+                    ></div>
+                </div>
 
-                    <div class="grid-menu-item">
-                        <div
-                            class="Ship-6 primeira-extremidade-navio-horizontal"
-                        ></div>
-                        <div class="Ship-6"></div>
-                        <div
-                            class="Ship-6 ultima-extremidade-navio-horizontal"
-                        ></div>
-                    </div>
+                <div class="grid-navios-item">
+                    <div
+                        class="Ship-6 primeira-extremidade-navio-horizontal"
+                    ></div>
+                    <div class="Ship-6"></div>
+                    <div
+                        class="Ship-6 ultima-extremidade-navio-horizontal"
+                    ></div>
                 </div>
             </div>
+        </div>
+
+        <div id="fim-jogo">
+            <div class="popup-container">
+                <h2>🏆Fim de Jogo🏆</h2>
+                <p style="margin-bottom: 25px">Obrigado por jogar!</p>
+                <p id="pontuacao-final">Sua pontuação foi: 999</p>
+                <button>
+                    Ver ranking de pontuações
+                </button>
+                <a href="game.html">Jogar Novamente</a>
+            </div>
+            <button onclick="menu.revelarPopup(false)">
+                <img src="IconesBatalhaNaval/fechar.png" alt="" />
+            </button>
         </div>
     </body>
 </html>
