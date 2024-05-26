@@ -1,6 +1,6 @@
-const input = document.querySelector(".login-input");
-const button = document.querySelector(".login-button");
-const form = document.querySelector(".login-form");
+const input = document.querySelector("input");
+const button = document.querySelector("button");
+const form = document.querySelector("form");
 
 const validarInput = ({ target }) => {
     if (target.value.trim().length >= 3) {
