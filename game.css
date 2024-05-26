@@ -1,46 +1,23 @@
-* {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  height: 100vh;
-  width: 100%;
-  background-image: url("IconesBatalhaNaval/fundo2.avif");
-  background-size: cover;
-  background-position: center;
-}
-
-.container {
-  transition: 0.5s ease;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+:root {
+  --cor-fundo-transparente: #4edcff54;
 }
 
 .menu-personagem {
   border-radius: 8px;
   backdrop-filter: blur(8px);
-  background-color: #4edcff31;
+  background-color: var(--cor-fundo-transparente);
   backdrop-filter: blur(8px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   gap: 80px;
-  margin-top: 0px;
   box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.432);
 }
 
 .jogador {
   color: white;
-  text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.418);
+  text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.521);
 }
 
 .controle {
@@ -61,51 +38,28 @@ body {
   width: fit-content;
   padding: 15px;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.678);
-  color: black;
+  background-color: rgb(0, 86, 112);
+  /* backdrop-filter: blur(8px); */
+  color: rgb(255, 255, 255);
   font-size: 1em;
   font-weight: bold;
-  border: 1px solid;
+
 }
 
 .coracao {
   transition: all 0.3s ease;
   padding: 5px;
   border-radius: 100%;
-  background-color: rgba(255, 255, 255, 0.384);
+  background-color: rgb(255, 177, 177);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.coracao:hover {
-  transform: scale(1.1);
-  background-color: rgb(255, 172, 172);
-}
-
-ul {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-ul li {
-  display: inline;
-  margin-left: 8px;
-}
-
-ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.grid-container {
-  background-color: rgba(255, 255, 255, 0.151);
+.container-principal {
+  background-color: var(--cor-fundo-transparente);
   backdrop-filter: blur(5px);
-  border: 3px dashed rgb(96, 133, 255);
-  box-shadow: -3px 3px 8px rgba(0, 0, 0, 0.432);
+  border: 4px dashed rgb(0, 39, 97);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -132,7 +86,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(53, 141, 255);
+  background-color: rgb(0, 55, 138);
   color: white;
   font-weight: bold;
   text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.315);
@@ -150,7 +104,7 @@ img {
   height: 30px;
   width: 30px;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
   transform-style: preserve-3d;
 }
 
@@ -170,15 +124,15 @@ img {
 }
 
 .back {
-  transition: 0.2s ease;
-  background-color: rgba(0, 107, 179, 0.336);
+  transition: 0.5s;
+  background-color: rgb(148, 212, 255);
   background-image: url("IconesBatalhaNaval/Fire-icon.png");
   backface-visibility: hidden;
 }
 
 .back:hover {
   cursor: pointer;
-  background-color: rgb(255, 55, 55);
+  background-color: rgb(194, 0, 0);
   border-radius: 14px;
 }
 
@@ -187,7 +141,7 @@ img {
 }
 
 .celula-revelada {
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 .Wave {
@@ -263,33 +217,114 @@ img {
   background-color: rgba(255, 0, 0, 0.74);
 }
 
-.pisca-vitoria {
-  transition: 0.5s ease;
-  background-color: rgba(138, 255, 127, 0.288);
-}
-
-.pisca-derrota {
-  transition: 0.5s ease;
-  background-color: rgba(255, 167, 167, 0.267);
-}
-
-.grid-menu-elementos {
+.grid-navios {
   margin-left: 30px;
-  background-color: #ffffff69;
+  background-color: #ffffff5e;
   display: grid;
-  grid-template-columns: repeat(1);
-  grid-template-rows: repeat(7);
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(7, 1fr);
   justify-content: center;
   align-items: center;
   gap: 10px;
   padding: 12px;
   border-radius: 8px;
-  border: 2px dotted;
 }
 
-.grid-menu-item{
+.grid-navios-item {
   display: grid;
-  grid-template-columns: repeat(3, 30px);
-  grid-template-rows: repeat(1, 30px);
+  grid-template-columns: 30px 30px 30px;
+  grid-template-rows: 30px;
   gap: 2px;
+  justify-content: center;
+}
+
+#fim-jogo {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.6s all;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+#fim-jogo.aberto {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: all;
+}
+
+button {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  outline: none; 
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#fim-jogo button img {
+  transition: 0.3s;
+  height: 26px;
+  width: 26px;
+  padding: 4px;
+  background-color: #ff8383;
+  border-radius: 100%;
+}
+
+#fim-jogo button img:hover {
+  background-color: #E55353;
+  transform: scale(1.1);
+}
+
+.popup-container {
+  background-color: rgba(255, 255, 255, 0.603);
+  border: 3px solid;
+  border-bottom: 3px dashed;
+  border-color: rgb(0, 71, 179);
+  padding: 50px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-container button {
+  transition: 0.6s;
+  font-weight: bold;
+  font-size: 1em;
+  background-color: rgb(66, 142, 255);
+  color: black;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+}
+
+.popup-container button:hover {
+  cursor: pointer;
+  background-color: rgb(0, 102, 255);
+  color: white;
+  border-radius: 30px;
+}
+
+.popup-container a {
+  transition: 0.5s;
+  color: rgb(0, 102, 255);
+  font-weight: bold;
+}
+
+.popup-container a:hover {
+  color: rgb(0, 69, 172);
 }
