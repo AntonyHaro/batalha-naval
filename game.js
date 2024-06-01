@@ -621,4 +621,4 @@ menu.instanciarTempo(true);
 const nomeJogador = document.querySelector(".jogador");
 nomeJogador.innerHTML = localStorage.getItem("jogador");
 
-document.addEventListener("click", player.tocarMusicaFundo, { once: true });
+grid.addEventListener("click", player.tocarMusicaFundo, { once: true });
