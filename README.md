@@ -1,50 +1,79 @@
-# BatalhaNaval
+# Batalha Naval
 
-Link da aplicação: https://antonyharo.github.io/BatalhaNaval/
+Este é um jogo de Batalha Naval implementado em JavaScript, onde o objetivo é encontrar e destruir todos os navios inimigos antes que suas vidas acabem.
 
-### Classe Matriz: 
-Responsável por controlar a formação dinâmica de elementos dentro do jogo.
-#### Métodos:
-- **_constructor()_**: Inicializa uma nova instância da matriz de jogo com um tamanho específico, quantidade de navios e quantidade de bombas.
-- **_criarMatrizVazia()_**: Cria uma matriz vazia preenchida com zeros.
-- **_criaNavio()_**: Coloca um navio na matriz de jogo, garantindo que não haja sobreposição com outros navios ou elementos.
-- **_adicionarElemento()_**: Adiciona elementos aleatoriamente à matriz de jogo.
-- **_adicionarElementos()_**: Adiciona navios, bombas e dois escudos à matriz de jogo usando as funções anteriormente definidas.
-- **_identificarCelula()_**: Identifica o tipo de célula com base no seu valor na matriz e a converte em uma string.
-- **_gerarArrayStrings()_**: Converte a matriz de jogo em uma matriz de strings representando os tipos de células utilizando a função anterior.
+## Funcionalidades
 
-### Classe Tabuleiro: 
-Responsável por gerar e manipular elementos HTML do tabuleiro.
-#### Métodos:
-- **_constructor()_**: Inicializa uma nova instância do tabuleiro de jogo com base em uma matriz de strings.
-- **_criarElemento()_**: Cria um elemento HTML com uma classe específica.
-- **_criarCard()_**: Cria um "cartão" (representando uma célula do jogo) com duas faces, uma virada para baixo e outra para cima.
-- **_isNavioHorizontal()_**: Verifica se um navio está posicionado horizontalmente.
-- **_estilizarPontasNavios()_**: Adiciona estilos visuais às extremidades dos navios.
-- **_revelarCard()_**: Manipula o evento de clique em um cartão, revelando seu conteúdo.
-- **_mostrarCard()_**: Mostra um cartão específico no tabuleiro.
-- **_revelarTabuleiro()_**: Revela todas as células do tabuleiro.
-- **_abrirCelulasProximasNavio()_**: Revela as células vizinhas de um navio derrubado.
-- **_derrubouNavio()_**: Verifica se um navio foi totalmente derrubado.
-- **_piscarNavioDerrubado()_**: Faz um navio derrubado piscar para indicar sua destruição.
-- **_revelarBombasTemporariamente()_**: Revela temporariamente a localização das bombas no tabuleiro.
-- **_adicionarIndices()_**: Adiciona números de linha e coluna ao tabuleiro para orientação do jogador.
-- **_carregarJogo()_**: Carrega o jogo, criando os elementos HTML para representar o tabuleiro e seus elementos.
-  
-### Classe Jogador:
-Responsável por controlar as ações e atributos do jogador.
-#### Métodos:
-- **_constructor()_**: Inicializa um novo jogador com uma quantidade específica de vidas.
-- **_clicou()_**: Manipula a ação do jogador ao clicar em uma célula do jogo.
-- **_clicouBomba()_**: Executa as ações necessárias quando o jogador clica em uma célula com uma bomba.
-- **_clicouNavio()_**: Executa as ações necessárias quando o jogador clica em uma célula com um navio.
-- **_tocarMusica()_**: Toca um efeito sonoro específico com base na ação do jogador.
-- **_tocarMusicaFundo()_**: Toca a música de fundo do jogo.
-  
-### Classe Interface:
-Responsável por manipular estruturas HTML da interface do jogador.
-#### Métodos:
-- **_constructor()_**: Inicializa a interface do jogo, carregando elementos como vidas e temporizador.
-- **_carregarVidas()_**: Adiciona visualmente as vidas do jogador à interface.
-- **_retirarVida()_**: Atualiza visualmente as vidas do jogador quando uma vida é perdida.
-- **_instanciarTempo()_**: Inicia ou para o temporizador do jogo e exibe o tempo decorrido.
+- **Matriz de Jogo**: Gera uma matriz onde os navios e bombas são posicionados aleatoriamente.
+- **Tabuleiro Interativo**: Permite ao jogador clicar nas células para revelar seu conteúdo (água, navio, bomba, ou escudo).
+- **Sistema de Vidas e Pontuação**: O jogador perde vidas ao clicar em bombas e ganha pontos ao revelar navios. O jogo termina quando todas as vidas são perdidas ou todos os navios são destruídos.
+- **Efeitos Sonoros**: Sons são tocados em eventos específicos como revelar água, bomba ou navio.
+- **Temporizador de Jogo**: Conta o tempo de jogo e influencia na pontuação final.
+- **Interface Dinâmica**: Atualiza em tempo real as vidas restantes, pontuação e estados de vitória/derrota.
+
+## Tecnologias Utilizadas
+
+- HTML5
+- CSS3
+- JavaScript ES6+
+
+## Como Jogar
+
+1. Clone o repositório:
+    ```sh
+    git clone https://github.com/seu-usuario/batalha-naval.git
+    cd batalha-naval
+    ```
+2. Abra o arquivo `index.html` em seu navegador.
+
+3. Insira seu nome de jogador quando solicitado.
+
+4. Clique nas células do tabuleiro para revelar o conteúdo e tentar encontrar todos os navios.
+
+## Regras do Jogo
+
+- **Navios**: São posicionados aleatoriamente e podem ocupar várias células consecutivas, na horizontal ou vertical.
+- **Bombas**: Se clicadas, reduzem o número de vidas do jogador.
+- **Escudos**: Revelam temporariamente todas as bombas no tabuleiro.
+- **Água**: Não afeta a pontuação ou as vidas do jogador.
+- **Vencer**: O jogo é vencido ao revelar todas as partes dos navios.
+- **Perder**: O jogo é perdido ao acabar todas as vidas.
+
+## Estrutura do Código
+
+### Matriz
+Classe responsável por criar e gerenciar a matriz do jogo, posicionar navios, bombas e escudos.
+
+### Tabuleiro
+Classe que controla a interface do jogo, renderiza o tabuleiro e lida com as interações do jogador.
+
+### Jogador
+Classe que gerencia o estado do jogador, incluindo vidas, pontuação e ações ao clicar nas células.
+
+### Interface
+Classe responsável pela atualização da interface do jogo, incluindo o painel de vidas, temporizador e pontuação final.
+
+## Personalização
+
+- **Alterar Tamanho da Matriz**: Modifique o parâmetro `tamanho` na instância da classe `Matriz` no arquivo principal.
+- **Ajustar Quantidade de Navios e Bombas**: Modifique os parâmetros `quantidadeNavios` e `quantidadeBombas` na instância da classe `Matriz`.
+
+## Contribuição
+
+1. Faça um fork do repositório
+2. Crie uma branch para sua feature (`git checkout -b feature/sua-feature`)
+3. Faça commit de suas alterações (`git commit -am 'Adicionei uma nova feature'`)
+4. Faça push para a branch (`git push origin feature/sua-feature`)
+5. Crie um novo Pull Request
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## Agradecimentos
+
+Obrigado por jogar Batalha Naval! Sinta-se à vontade para contribuir e melhorar o jogo.
+
+---
+
+**Divirta-se e boa sorte na batalha!**
