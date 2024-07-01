@@ -1,4 +1,4 @@
-# Batalha Naval
+# A Batalha dos Sete Mares
 
 Este é um jogo de Batalha Naval implementado em JavaScript, onde o objetivo é encontrar e destruir todos os navios inimigos antes que suas vidas acabem.
 
@@ -8,7 +8,7 @@ Este é um jogo de Batalha Naval implementado em JavaScript, onde o objetivo é 
 - **Tabuleiro Interativo**: Permite ao jogador clicar nas células para revelar seu conteúdo (água, navio, etc).
 - **Sistema de Vidas e Pontuação**: O jogador perde vidas ao clicar em bombas e ganha pontos ao revelar navios. O jogo termina quando todas as vidas são perdidas ou todos os navios são destruídos.
 - **Efeitos Sonoros**: Sons são tocados em eventos específicos como revelar água, bomba ou navio.
-- **Temporizador de Jogo**: Conta o tempo de jogo e influencia na pontuação final.
+- **Temporizador de Jogo**: Conta o tempo de jogo e impacata na pontuação final do jogador.
 - **Interface Dinâmica**: Atualiza em tempo real as vidas restantes, pontuação e estados de vitória/derrota.
 
 ## Tecnologias Utilizadas
@@ -19,16 +19,11 @@ Este é um jogo de Batalha Naval implementado em JavaScript, onde o objetivo é 
 
 ## Como Jogar
 
-1. Clone o repositório:
-    ```sh
-    git clone https://github.com/seu-usuario/batalha-naval.git
-    cd batalha-naval
-    ```
-2. Abra o arquivo `index.html` em seu navegador.
+1. Abra o seguinte link no seu navegador: https://antonyharo.github.io/BatalhaNaval/
 
-3. Insira seu nome de jogador quando solicitado.
+2. Insira seu nome de jogador quando solicitado.
 
-4. Clique nas células do tabuleiro para revelar o conteúdo e tentar encontrar todos os navios.
+3. Clique nas células do tabuleiro para revelar o conteúdo e tentar encontrar todos os navios.
 
 ## Regras do Jogo
 
