@@ -2,6 +2,7 @@
 
 Este é um jogo de Batalha Naval implementado em JavaScript, onde o objetivo é encontrar e destruir todos os navios inimigos antes que suas vidas acabem.
 
+---
 ## Funcionalidades
 
 - **Matriz de Jogo**: Gera uma matriz onde os navios e bombas são posicionados aleatoriamente.
@@ -11,12 +12,14 @@ Este é um jogo de Batalha Naval implementado em JavaScript, onde o objetivo é 
 - **Temporizador de Jogo**: Conta o tempo de jogo e impacata na pontuação final do jogador.
 - **Interface Dinâmica**: Atualiza em tempo real as vidas restantes, pontuação e estados de vitória/derrota.
 
+---
 ## Tecnologias Utilizadas
 
 - HTML5
 - CSS3
 - JavaScript ES6+
 
+---
 ## Como Jogar
 
 1. Abra o seguinte link no seu navegador: https://antonyharo.github.io/BatalhaNaval/
@@ -25,6 +28,7 @@ Este é um jogo de Batalha Naval implementado em JavaScript, onde o objetivo é 
 
 3. Clique nas células do tabuleiro para revelar o conteúdo e tentar encontrar todos os navios.
 
+---
 ## Regras do Jogo
 
 - **Navios**: São posicionados aleatoriamente e podem ocupar várias células consecutivas, na horizontal ou vertical.
@@ -34,6 +38,7 @@ Este é um jogo de Batalha Naval implementado em JavaScript, onde o objetivo é 
 - **Vencer**: O jogo é vencido ao revelar todas as partes dos navios.
 - **Perder**: O jogo é perdido ao acabar todas as vidas.
 
+---
 ## Estrutura do Código
 
 ### Matriz
@@ -48,15 +53,16 @@ Classe que gerencia o estado do jogador, incluindo vidas, pontuação e ações 
 ### Interface
 Classe responsável pela atualização da interface do jogo, incluindo o painel de vidas, temporizador e pontuação final.
 
+---
 ## Personalização
 
 - **Alterar Tamanho da Matriz**: Modifique o parâmetro `tamanho` na instância da classe `Matriz` no arquivo principal.
 - **Ajustar Quantidade de Navios e Bombas**: Modifique os parâmetros `quantidadeNavios` e `quantidadeBombas` na instância da classe `Matriz`.
 
+---
 ## Agradecimentos
 
 Obrigado por jogar Batalha Naval! Sinta-se à vontade para contribuir e melhorar o jogo.
 
 ---
-
-**Divirta-se e boa sorte na batalha!**
+**Divirta-se e boa sorte na batalha! ☠️🏴‍☠️**
