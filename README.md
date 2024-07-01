@@ -5,7 +5,7 @@ Este é um jogo de Batalha Naval implementado em JavaScript, onde o objetivo é 
 ## Funcionalidades
 
 - **Matriz de Jogo**: Gera uma matriz onde os navios e bombas são posicionados aleatoriamente.
-- **Tabuleiro Interativo**: Permite ao jogador clicar nas células para revelar seu conteúdo (água, navio, bomba, ou escudo).
+- **Tabuleiro Interativo**: Permite ao jogador clicar nas células para revelar seu conteúdo (água, navio, etc).
 - **Sistema de Vidas e Pontuação**: O jogador perde vidas ao clicar em bombas e ganha pontos ao revelar navios. O jogo termina quando todas as vidas são perdidas ou todos os navios são destruídos.
 - **Efeitos Sonoros**: Sons são tocados em eventos específicos como revelar água, bomba ou navio.
 - **Temporizador de Jogo**: Conta o tempo de jogo e influencia na pontuação final.
