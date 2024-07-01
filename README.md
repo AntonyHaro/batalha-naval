@@ -58,18 +58,6 @@ Classe responsável pela atualização da interface do jogo, incluindo o painel 
 - **Alterar Tamanho da Matriz**: Modifique o parâmetro `tamanho` na instância da classe `Matriz` no arquivo principal.
 - **Ajustar Quantidade de Navios e Bombas**: Modifique os parâmetros `quantidadeNavios` e `quantidadeBombas` na instância da classe `Matriz`.
 
-## Contribuição
-
-1. Faça um fork do repositório
-2. Crie uma branch para sua feature (`git checkout -b feature/sua-feature`)
-3. Faça commit de suas alterações (`git commit -am 'Adicionei uma nova feature'`)
-4. Faça push para a branch (`git push origin feature/sua-feature`)
-5. Crie um novo Pull Request
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
 ## Agradecimentos
 
 Obrigado por jogar Batalha Naval! Sinta-se à vontade para contribuir e melhorar o jogo.
