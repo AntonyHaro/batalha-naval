@@ -22,8 +22,8 @@ Este é um jogo de Batalha Naval implementado em JavaScript, onde o objetivo é 
 ---
 ## Como Jogar
 
-1. Abra o seguinte link no seu navegador: https://antonyharo.github.io/BatalhaNaval/
-
+1. Abra o seguinte link no seu navegador: https://antonyharo.github.io/batalha-naval/
+   
 2. Insira seu nome de jogador quando solicitado.
 
 3. Clique nas células do tabuleiro para revelar o conteúdo e tentar encontrar todos os navios.
